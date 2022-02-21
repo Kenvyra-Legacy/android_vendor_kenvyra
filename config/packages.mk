@@ -16,6 +16,7 @@
 # Required packages
 PRODUCT_PACKAGES += \
     Aperture \
+    AudioFX \
     BluetoothExt \
     Etar \
     ExactCalculator \
