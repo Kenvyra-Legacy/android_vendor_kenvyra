@@ -1,0 +1,5 @@
+{
+    "name": "arrow",
+    "fetch": "https://github.com/ArrowOS/android_vendor_arrow",
+    "revision": "refs/heads/arrow-13.0"
+}
