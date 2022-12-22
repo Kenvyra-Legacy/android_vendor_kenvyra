@@ -16,6 +16,7 @@
 # Required packages
 PRODUCT_PACKAGES += \
     BluetoothExt \
+    Etar \
     ExactCalculator \
     LatinIME \
     Launcher3QuickStep \
