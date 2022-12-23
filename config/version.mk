@@ -59,12 +59,12 @@ endif
 ARROW_VERSION := Arrow-$(ARROW_MOD_VERSION)-$(CURRENT_DEVICE)-$(ARROW_BUILD_TYPE)-$(shell date -u +%Y%m%d)-$(ARROW_BUILD_ZIP_TYPE)
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-  ro.arrow.version=$(ARROW_VERSION) \
-  ro.arrow.releasetype=$(ARROW_BUILD_TYPE) \
-  ro.arrow.ziptype=$(ARROW_BUILD_ZIP_TYPE) \
+  ro.kenvyra.version=$(ARROW_VERSION) \
+  ro.kenvyra.releasetype=$(ARROW_BUILD_TYPE) \
+  ro.kenvyra.ziptype=$(ARROW_BUILD_ZIP_TYPE) \
   ro.modversion=$(ARROW_MOD_VERSION)
 
 ARROW_DISPLAY_VERSION := Arrow-$(ARROW_MOD_VERSION)-$(ARROW_BUILD_TYPE)
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-  ro.arrow.display.version=$(ARROW_DISPLAY_VERSION)
+  ro.kenvyra.display.version=$(ARROW_DISPLAY_VERSION)
