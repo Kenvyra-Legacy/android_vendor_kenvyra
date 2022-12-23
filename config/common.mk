@@ -17,9 +17,6 @@ include vendor/kenvyra/config/version.mk
 PRODUCT_PACKAGE_OVERLAYS += \
     vendor/kenvyra/overlay/common
 
-PRODUCT_PACKAGE_OVERLAYS += \
-    vendor/kenvyra/overlay/themes/ArrowIcons
-
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += \
     vendor/kenvyra/overlay/common
 
