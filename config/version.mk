@@ -13,58 +13,58 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-ARROW_MOD_VERSION = v13.0
-ARROW_BUILD_TYPE := UNOFFICIAL
-ARROW_BUILD_ZIP_TYPE := VANILLA
+KENVYRA_MOD_VERSION = v13.0
+KENVYRA_BUILD_TYPE := UNOFFICIAL
+KENVYRA_BUILD_ZIP_TYPE := VANILLA
 
-ifeq ($(ARROW_BETA),true)
-    ARROW_BUILD_TYPE := BETA
+ifeq ($(KENVYRA_BETA),true)
+    KENVYRA_BUILD_TYPE := BETA
 endif
 
-ifeq ($(ARROW_GAPPS), true)
+ifeq ($(KENVYRA_GAPPS), true)
     $(call inherit-product, vendor/gapps/common/common-vendor.mk)
-    ARROW_BUILD_ZIP_TYPE := GAPPS
+    KENVYRA_BUILD_ZIP_TYPE := GAPPS
 endif
 
 CURRENT_DEVICE=$(shell echo "$(TARGET_PRODUCT)" | cut -d'_' -f 2,3)
 
-ifeq ($(ARROW_OFFICIAL), true)
+ifeq ($(KENVYRA_OFFICIAL), true)
    LIST = $(shell cat infrastructure/devices/arrow.devices | awk '$$1 != "#" { print $$2 }')
     ifeq ($(filter $(CURRENT_DEVICE), $(LIST)), $(CURRENT_DEVICE))
       IS_OFFICIAL=true
-      ARROW_BUILD_TYPE := OFFICIAL
+      KENVYRA_BUILD_TYPE := OFFICIAL
 
 PRODUCT_PACKAGES += \
     Updater
 
     endif
     ifneq ($(IS_OFFICIAL), true)
-       ARROW_BUILD_TYPE := UNOFFICIAL
+       KENVYRA_BUILD_TYPE := UNOFFICIAL
        $(error Device is not official "$(CURRENT_DEVICE)")
     endif
 endif
 
-ifeq ($(ARROW_COMMUNITY), true)
+ifeq ($(KENVYRA_COMMUNITY), true)
    LIST = $(shell cat infrastructure/devices/arrow-community.devices | awk '$$1 != "#" { print $$2 }')
     ifeq ($(filter $(CURRENT_DEVICE), $(LIST)), $(CURRENT_DEVICE))
       IS_COMMUNITY=true
-      ARROW_BUILD_TYPE := COMMUNITY
+      KENVYRA_BUILD_TYPE := COMMUNITY
     endif
     ifneq ($(IS_COMMUNITY), true)
-       ARROW_BUILD_TYPE := UNOFFICIAL
+       KENVYRA_BUILD_TYPE := UNOFFICIAL
        $(error This isn't a community device "$(CURRENT_DEVICE)")
     endif
 endif
 
-ARROW_VERSION := Arrow-$(ARROW_MOD_VERSION)-$(CURRENT_DEVICE)-$(ARROW_BUILD_TYPE)-$(shell date -u +%Y%m%d)-$(ARROW_BUILD_ZIP_TYPE)
+KENVYRA_VERSION := Kenvyra-$(KENVYRA_MOD_VERSION)-$(CURRENT_DEVICE)-$(KENVYRA_BUILD_TYPE)-$(shell date -u +%Y%m%d)-$(KENVYRA_BUILD_ZIP_TYPE)
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-  ro.kenvyra.version=$(ARROW_VERSION) \
-  ro.kenvyra.releasetype=$(ARROW_BUILD_TYPE) \
-  ro.kenvyra.ziptype=$(ARROW_BUILD_ZIP_TYPE) \
-  ro.modversion=$(ARROW_MOD_VERSION)
+  ro.kenvyra.version=$(KENVYRA_VERSION) \
+  ro.kenvyra.releasetype=$(KENVYRA_BUILD_TYPE) \
+  ro.kenvyra.ziptype=$(KENVYRA_BUILD_ZIP_TYPE) \
+  ro.modversion=$(KENVYRA_MOD_VERSION)
 
-ARROW_DISPLAY_VERSION := Arrow-$(ARROW_MOD_VERSION)-$(ARROW_BUILD_TYPE)
+KENVYRA_DISPLAY_VERSION := Kenvyra-$(KENVYRA_MOD_VERSION)-$(KENVYRA_BUILD_TYPE)
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-  ro.kenvyra.display.version=$(ARROW_DISPLAY_VERSION)
+  ro.kenvyra.display.version=$(KENVYRA_DISPLAY_VERSION)
