@@ -25,6 +25,7 @@ PRODUCT_PACKAGES += \
     messaging \
     Stk \
     ThemePicker \
+    TrichromeWebView \
     ArrowThemesStub
 
 # SystemUI plugins
