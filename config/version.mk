@@ -36,15 +36,7 @@ ifeq ($(KENVYRA_OFFICIAL), true)
 endif
 
 ifeq ($(KENVYRA_COMMUNITY), true)
-   LIST = $(shell cat infrastructure/devices/arrow-community.devices | awk '$$1 != "#" { print $$2 }')
-    ifeq ($(filter $(CURRENT_DEVICE), $(LIST)), $(CURRENT_DEVICE))
-      IS_COMMUNITY=true
-      KENVYRA_BUILD_TYPE := COMMUNITY
-    endif
-    ifneq ($(IS_COMMUNITY), true)
-       KENVYRA_BUILD_TYPE := UNOFFICIAL
-       $(error This isn't a community device "$(CURRENT_DEVICE)")
-    endif
+    KENVYRA_BUILD_TYPE := COMMUNITY
 endif
 
 KENVYRA_VERSION := Kenvyra-$(KENVYRA_MOD_VERSION)-$(CURRENT_DEVICE)-$(KENVYRA_BUILD_TYPE)-$(shell date -u +%Y%m%d)-$(KENVYRA_BUILD_ZIP_TYPE)
