@@ -26,6 +26,20 @@ ifeq ($(KENVYRA_GAPPS), true)
     KENVYRA_BUILD_ZIP_TYPE := GAPPS
 endif
 
+ifeq ($(KENVYRA_MICROG), true)
+    PRODUCT_PACKAGES += \
+        DejaVuLocationService \
+        FakeStore \
+        F-Droid \
+        GmsCore \
+        GsfProxy \
+        MozillaNlpBackend \
+        NominatimNlpBackend \
+        Seedvault
+
+    KENVYRA_BUILD_ZIP_TYPE := MICROG
+endif
+
 CURRENT_DEVICE=$(shell echo "$(TARGET_PRODUCT)" | cut -d'_' -f 2,3)
 
 ifeq ($(KENVYRA_OFFICIAL), true)
