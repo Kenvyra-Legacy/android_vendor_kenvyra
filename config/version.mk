@@ -29,19 +29,10 @@ endif
 CURRENT_DEVICE=$(shell echo "$(TARGET_PRODUCT)" | cut -d'_' -f 2,3)
 
 ifeq ($(KENVYRA_OFFICIAL), true)
-   LIST = $(shell cat infrastructure/devices/arrow.devices | awk '$$1 != "#" { print $$2 }')
-    ifeq ($(filter $(CURRENT_DEVICE), $(LIST)), $(CURRENT_DEVICE))
-      IS_OFFICIAL=true
-      KENVYRA_BUILD_TYPE := OFFICIAL
+    KENVYRA_BUILD_TYPE := OFFICIAL
 
-PRODUCT_PACKAGES += \
-    Updater
-
-    endif
-    ifneq ($(IS_OFFICIAL), true)
-       KENVYRA_BUILD_TYPE := UNOFFICIAL
-       $(error Device is not official "$(CURRENT_DEVICE)")
-    endif
+    PRODUCT_PACKAGES += \
+        Updater
 endif
 
 ifeq ($(KENVYRA_COMMUNITY), true)
